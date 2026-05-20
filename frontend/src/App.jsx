@@ -7,7 +7,7 @@ const Navbar = lazy(() => import("./components/Navbar"));
 const Login = lazy(() => import("./pages/Login"));
 const Footer = lazy(() => import("./components/Footer"));
 const Blog = lazy(() => import("./pages/Blog"));
-const CreateBlog = lazy(() => import("./pages/createBlog"));
+const CreateBlog = lazy(() => import("./pages/CreateBlog"));
 const BlogDetail = lazy(() => import("./pages/BlogDetail"));
 const ContactUs = lazy(() => import("./pages/ContactUs"));
 const Author = lazy(() => import("./pages/Author"));
