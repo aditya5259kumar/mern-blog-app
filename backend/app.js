@@ -14,7 +14,7 @@ import blogRoutes from "./routes/blogRoutes.js";
 
 const app = express();
 dotenv.config();
-// const port = process.env.PORT;
+const port = process.env.PORT;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -26,7 +26,7 @@ const __dirname = path.dirname(__filename);
 app.use(
   cors({
     origin: process.env.CLIENT_URL,
-    method: ["PUT", "POST", "GET", "DELETE"],
+    methods: ["PUT", "POST", "GET", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   }),
 );
@@ -60,6 +60,6 @@ app.use((err, req, res, next) => {
   });
 });
 
-// app.listen(port, () => {
-//   console.log(`server is listening at port: ${port}`);
-// });
+app.listen(port, () => {
+  console.log(`server is listening at port: ${port}`);
+});
