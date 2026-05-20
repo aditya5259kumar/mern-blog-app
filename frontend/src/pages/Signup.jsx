@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 import { Link, useNavigate } from "react-router";
 import { signupUser } from "../redux/slices/authSlice";
@@ -26,6 +26,10 @@ const Signup = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     setError({ ...error, [e.target.name]: "" });
   }
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   async function submitHandler(e) {
     e.preventDefault();
@@ -78,7 +82,7 @@ const Signup = () => {
               To keep connected with us please login with your personal info
             </p>
             <Link to="/login">
-              <button className="bg-white text-black border border-white hover:bg-transparent hover:text-white px-7 py-4 rounded-lg text-sm font-medium transition-all ease-in-out">
+              <button className="cursor-pointer bg-white text-black border border-white hover:bg-transparent hover:text-white px-7 py-4 rounded-lg text-sm font-medium transition-all ease-in-out">
                 Log In
               </button>
             </Link>
@@ -99,7 +103,7 @@ const Signup = () => {
                   name="userName"
                   value={formData.userName}
                   onChange={handleOnChange}
-                  placeholder="Enter Your UserName"
+                  placeholder="Enter Your @userName"
                   className=" bg-white border text-sm border-gray-300 w-full px-6 py-4 focus:border-gray-600 focus:outline-none rounded-lg mb-6 "
                 />
                 {error.email && (
@@ -130,7 +134,7 @@ const Signup = () => {
                     className="text-sm w-full pl-6 py-4 focus:outline-none "
                   />
                   <span
-                    className="text-xl text-gray-500 mx-5"
+                    className="text-xl text-gray-500 mx-5 cursor-pointer"
                     onClick={handleShowPassword}
                   >
                     {passwordShow ? (
@@ -147,8 +151,17 @@ const Signup = () => {
                   {authError}
                 </p>
               )}
-              <button className="mb-4 bg-gray-700 border border-gray-700 hover:bg-transparent text-white hover:text-black px-7 py-4 rounded-lg text-sm font-medium transition-all ease-in-out">
-                {loading ? "Loading..." : "Log In"}
+              <button
+                disabled={loading}
+                className={`mb-4 bg-gray-700 border border-gray-700 text-white px-7 py-4 rounded-lg text-sm font-medium transition-all ease-in-out inline-flex items-center justify-center gap-2 ${
+                  loading ? "opacity-60 cursor-not-allowed" : "cursor-pointer"
+                }`}
+              >
+                {loading && (
+                  <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                )}
+
+                {loading ? "Signing up..." : "Sign Up"}
               </button>
             </form>
           </div>

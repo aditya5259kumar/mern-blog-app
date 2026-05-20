@@ -20,12 +20,22 @@ const AuthorDetail = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     dispatch(authorDetail(id));
   }, [dispatch, id]);
 
   // console.log("singleAuthor==========>", singleAuthor);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <span className="w-10 h-10 border-4 border-gray-400 border-t-transparent rounded-full animate-spin"></span>
+      </div>
+    );
+  }
 
   if (!singleAuthor.author) return <p>Author not found</p>;
 

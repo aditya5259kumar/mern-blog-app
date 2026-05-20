@@ -19,6 +19,10 @@ const Category = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     dispatch(blogCategory(defaultBlogCategory));
   }, [dispatch]);
 
@@ -79,7 +83,6 @@ const Category = () => {
                   </Link>
                 ))}
           </div>
-          
 
           {!loading && blogsWithSameCategory.length === 0 && (
             <p className="text-center w-full mb-4 text-gray-500 text-lg mt-6">

@@ -233,6 +233,8 @@ const blogSlice = createSlice({
     blogsWithSameCategory: [],
     currentBlog: null,
     loading: false,
+    deleteLoading: false,
+    updateLoading: false,
     error: null,
   },
   reducers: {},
@@ -297,27 +299,27 @@ const blogSlice = createSlice({
 
       // deleteBlogs-------------
       .addCase(deleteBlog.pending, (state) => {
-        state.loading = true;
+        state.deleteLoading = true;
         state.error = null;
       })
       .addCase(deleteBlog.fulfilled, (state, action) => {
-        state.loading = false;
+        state.deleteLoading = false;
         state.error = null;
         const deletedId = action.payload;
         state.blogs = state.blogs.filter((blog) => blog._id !== deletedId);
       })
       .addCase(deleteBlog.rejected, (state, action) => {
-        state.loading = false;
+        state.deleteLoading = false;
         state.error = action.payload;
       })
 
       // updateBlogs-------------
       .addCase(updateBlog.pending, (state) => {
-        state.loading = true;
+        state.updateLoading = true;
         state.error = null;
       })
       .addCase(updateBlog.fulfilled, (state, action) => {
-        state.loading = false;
+        state.updateLoading = false;
         state.error = null;
 
         const updatedBlog = action.payload;
@@ -329,7 +331,7 @@ const blogSlice = createSlice({
         state.currentBlog = updatedBlog;
       })
       .addCase(updateBlog.rejected, (state, action) => {
-        state.loading = false;
+        state.updateLoading = false;
         state.error = action.payload;
       })
 

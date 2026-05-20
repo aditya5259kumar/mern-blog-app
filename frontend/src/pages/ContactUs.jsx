@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -13,6 +13,10 @@ const ContactUs = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     setError({ ...error, [e.target.name]: "" });
   }
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   function handlesubmit(e) {
     e.preventDefault();

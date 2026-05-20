@@ -42,13 +42,15 @@ const BlogCard = ({ item }) => {
           </div>
         </div>
         <div>
-          <h4 className="font-semibold text-xl mb-2 line-clamp-2">{item.title}</h4>
+          <h4 className="font-semibold text-xl mb-2 line-clamp-2">
+            {item.title}
+          </h4>
 
           <div className="flex flex-wrap gap-y-2 items-center space-x-4 my-5">
-           {item?.category?.map((val) => (
+            {item?.category?.map((val) => (
               <button
                 key={val}
-                className="shadow-md px-3 py-1 cursor-pointer border-gray-800 bg-gray-700 hover:bg-white  border rounded-sm text-white hover:text-gray-800 font-lg text-sm transition-all duration-200"
+                className="shadow-md px-3 py-1 border-gray-800 bg-gray-700 hover:bg-white  border rounded-sm text-white hover:text-gray-800 font-lg text-sm transition-all duration-200"
               >
                 {val}
               </button>

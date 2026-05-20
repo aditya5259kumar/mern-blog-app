@@ -9,7 +9,7 @@ import defaultUser from "../assets/defaultUser.jpg";
 
 const MyProfile = () => {
   const dispatch = useDispatch();
-  const { user, blogs, totalBlogs,totalLikes, loading, error } = useSelector(
+  const { user, blogs, totalBlogs, totalLikes, loading, error } = useSelector(
     (state) => state.user,
   );
 
@@ -24,6 +24,10 @@ const MyProfile = () => {
   const [originalData, setOriginalData] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
   const [previewImage, setPreviewImage] = useState(null);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     dispatch(myProfile());

@@ -18,6 +18,10 @@ const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     dispatch(readBlogs());
   }, [dispatch]);
 
@@ -116,8 +120,8 @@ const Home = () => {
         <h5 className="text-3xl font-semibold border-b border-t border-gray-300 mb-12 py-4">
           Trending Blogs
         </h5>
-          <div>
-        <div className="mb-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
+        <div>
+          <div className="mb-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
             {loading
               ? Array.from({ length: 3 }).map((_, i) => (
                   <SkeletonCard key={i} />

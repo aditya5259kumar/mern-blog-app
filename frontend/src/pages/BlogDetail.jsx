@@ -47,12 +47,17 @@ const BlogDetail = () => {
   const {
     currentBlog,
     loading,
+    deleteLoading,
     error: authError,
   } = useSelector((state) => state.blog);
 
   const { user, isLoading } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     dispatch(blogDetail(id));
@@ -62,11 +67,27 @@ const BlogDetail = () => {
   // console.log("currentBlog=====", currentBlog);
 
   if (loading || isLoading) {
-    return <p>loading...</p>;
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <span className="w-10 h-10 border-4 border-gray-400 border-t-transparent rounded-full animate-spin"></span>
+      </div>
+    );
+  }
+
+  if (deleteLoading) {
+    return (
+      <div className="fixed inset-0 z-50 bg-white flex items-center justify-center">
+        <span className="w-12 h-12 border-4 border-gray-500 border-t-transparent rounded-full animate-spin"></span>
+      </div>
+    );
   }
 
   if (!currentBlog) {
-    return <p>No blog found</p>;
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p className="text-lg font-medium text-gray-600">No blog found</p>
+      </div>
+    );
   }
 
   const formatDate = (dateString) => {
@@ -93,11 +114,15 @@ const BlogDetail = () => {
     dispatch(toggleLikeBlog(id));
   }
 
-  function blogDeleteHandler() {
+  async function blogDeleteHandler() {
     if (!confirm("Are you sure you want to delete this blog??")) return;
-    dispatch(deleteBlog(id));
-    navigate("/blog");
-    toast.success("blog deleted successfully.");
+    try {
+      await dispatch(deleteBlog(id)).unwrap();
+      toast.success("Blog deleted successfully.");
+      navigate("/blog");
+    } catch (error) {
+      toast.error(error);
+    }
   }
 
   function blogEditHandler() {
@@ -108,7 +133,6 @@ const BlogDetail = () => {
   return (
     <div className=" my-15">
       <div className="container px-8 xl:px-60 lg:px-40 mx-auto">
-        {loading && <p className="text-center">Loading...</p>}
 
         <div className="flex items-center justify-between pb-3 mb-3 border-b border-gray-200">
           <span className="text-lg font-medium text-gray-500">
@@ -183,7 +207,7 @@ const BlogDetail = () => {
           modules={[EffectFade, Navigation, Pagination]}
           className="mySwiper mb-4 overflow-hidden rounded-2xl shadow-xl"
         >
-          {currentBlog?.images.map((item) => (
+          {currentBlog?.images?.map((item) => (
             <SwiperSlide key={item}>
               <img
                 src={`http://localhost:3000${item}`}
@@ -205,7 +229,7 @@ const BlogDetail = () => {
         </div> */}
 
         <div className="mt-6 mb-5 flex flex-wrap gap-x-4 gap-y-2">
-          {currentBlog.category.map((val) => (
+          {currentBlog?.category?.map((val) => (
             <button
               key={val}
               className="px-4 py-2 bg-gray-600 rounded-md text-white text-sm"
@@ -243,7 +267,6 @@ const BlogDetail = () => {
         />
 
         <div className="block md:flex justify-between items-center border-t pt-6 border-gray-300">
-
           <div className="flex items-center border-none md:border-b border-gray-300 pb-6 mb-4 gap-6">
             <div
               onClick={likeHandler}
@@ -285,7 +308,6 @@ const BlogDetail = () => {
               </span>
             </div>
           </div>
-
         </div>
 
         {authError && (

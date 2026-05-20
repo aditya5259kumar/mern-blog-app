@@ -36,6 +36,10 @@ const CreateBlog = () => {
   // console.log(editMode);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     if (id) {
       dispatch(blogDetail(id));
     }

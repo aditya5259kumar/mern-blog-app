@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 import { Link, useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
@@ -25,6 +25,10 @@ const Login = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     setError({ ...error, [e.target.name]: "" });
   }
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   async function submitHandler(e) {
     e.preventDefault();
@@ -64,7 +68,7 @@ const Login = () => {
               Enter your personal details and start journey with us
             </p>
             <Link to="/signup">
-              <button className="bg-white text-black border border-white hover:bg-transparent hover:text-white px-7 py-4 rounded-lg text-sm font-medium transition-all ease-in-out">
+              <button className="bg-white text-black border border-white hover:bg-transparent hover:text-white px-7 py-4 rounded-lg text-sm font-medium transition-all ease-in-out cursor-pointer">
                 Sign Up
               </button>
             </Link>
@@ -103,11 +107,11 @@ const Login = () => {
                     className="text-sm w-full pl-6 py-4 focus:outline-none "
                   />
                   <span
-                    className="text-xl text-gray-500 mx-5"
+                    className="text-xl text-gray-500 mx-5 cursor-pointer"
                     onClick={handleShowPassword}
                   >
                     {passwordShow ? (
-                      <HiOutlineEye className="text-black" />
+                      <HiOutlineEye className="text-black " />
                     ) : (
                       <HiOutlineEyeOff />
                     )}
@@ -121,11 +125,24 @@ const Login = () => {
                 </p>
               )}
 
-              <button className="mb-4 bg-gray-700 border border-gray-700 hover:bg-transparent text-white hover:text-black px-7 py-4 rounded-lg text-sm font-medium transition-all ease-in-out">
+              {/* <button className="mb-4 bg-gray-700 border border-gray-700 hover:bg-transparent text-white hover:text-black px-7 py-4 rounded-lg text-sm font-medium transition-all ease-in-out">
                 {loading ? "Loading..." : "Log In"}
+              </button> */}
+
+              <button
+                disabled={loading}
+                className={`mb-4 cursor-pointer bg-gray-700 border border-gray-700 text-white px-7 py-4 rounded-lg text-sm font-medium transition-all ease-in-out inline-flex items-center justify-center gap-2 ${
+                  loading ? "opacity-60 cursor-not-allowed" : ""
+                }`}
+              >
+                {loading && (
+                  <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                )}
+
+                {loading ? "Logging in..." : "Log In"}
               </button>
             </form>
-            <a href="" className="block">
+            <a href="" className="block cursor-pointer">
               Forgot Password
             </a>
           </div>
