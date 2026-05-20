@@ -27,7 +27,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://mern-blog-app-ebon.vercel.app"
+      "https://mern-blog-app-mu-ecru.vercel.app",
     ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
