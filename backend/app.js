@@ -14,7 +14,7 @@ import blogRoutes from "./routes/blogRoutes.js";
 
 const app = express();
 dotenv.config();
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
