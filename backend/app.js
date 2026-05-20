@@ -25,8 +25,12 @@ const __dirname = path.dirname(__filename);
 
 app.use(
   cors({
-    origin: process.env.CLIENT_URL,
-    methods: ["PUT", "POST", "GET", "DELETE"],
+    origin: [
+      "http://localhost:5173",
+      "https://mern-blog-app-ebon.vercel.app"
+    ],
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
   }),
 );
