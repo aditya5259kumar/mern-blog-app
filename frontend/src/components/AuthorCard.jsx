@@ -11,7 +11,7 @@ const AuthorCard = ({ author }) => {
         <img
           src={
             author?.profilePhoto
-              ? `http://localhost:3000${author.profilePhoto}`
+              ? `https://mern-blog-app-aq3a.onrender.com${author.profilePhoto}`
               : defaultUser
           }
           alt="Author"

@@ -88,7 +88,7 @@ const Navbar = () => {
                       <img
                         src={
                           user?.profilePhoto
-                            ? `http://localhost:3000${user?.profilePhoto}`
+                            ? `https://mern-blog-app-aq3a.onrender.com${user?.profilePhoto}`
                             : defaultUser
                         }
                         alt=""

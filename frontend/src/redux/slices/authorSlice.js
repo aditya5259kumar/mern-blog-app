@@ -6,7 +6,7 @@ export const allAuthors = createAsyncThunk(
   "allAuthors",
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get("http://localhost:3000/api/all-authors");
+      const response = await axios.get("https://mern-blog-app-aq3a.onrender.com/api/all-authors");
       //   console.log("response.data---------->", response.data);
       return response.data.data;
     } catch (error) {
@@ -21,7 +21,7 @@ export const authorDetail = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/author/${id}`,
+        `https://mern-blog-app-aq3a.onrender.com/api/author/${id}`,
       );
       // console.log("response.data---------->", response.data);
       return response.data.data;
@@ -39,7 +39,7 @@ export const searchAuthor = createAsyncThunk(
   async (search, thunkAPI) => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/search-author?search=${search}`,
+        `https://mern-blog-app-aq3a.onrender.com/api/search-author?search=${search}`,
       );
 
       return response.data.data;

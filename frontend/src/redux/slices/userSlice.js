@@ -8,7 +8,7 @@ export const myProfile = createAsyncThunk(
     try {
       const token = localStorage.getItem("token");
 
-      const response = await axios.get("http://localhost:3000/api/my-profile", {
+      const response = await axios.get("https://mern-blog-app-aq3a.onrender.com/api/my-profile", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -33,7 +33,7 @@ export const updateProfile = createAsyncThunk(
       const token = localStorage.getItem("token");
 
       const response = await axios.put(
-        "http://localhost:3000/api/profile-update",
+        "https://mern-blog-app-aq3a.onrender.com/api/profile-update",
         formData,
         {
           headers: {

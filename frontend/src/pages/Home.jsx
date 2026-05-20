@@ -84,7 +84,7 @@ const Home = () => {
                 <Link to={token ? `/blog/${mainHeroBlog?._id}` : "/login"}>
                   <div className="relative overflow-hidden rounded-md md:rounded-lg">
                     <img
-                      src={`http://localhost:3000${mainHeroBlog?.images?.[0]}`}
+                      src={`https://mern-blog-app-aq3a.onrender.com${mainHeroBlog?.images?.[0]}`}
                       alt={mainHeroBlog?.title}
                       className="h-50 md:h-100 group-hover:scale-110 transition-all w-4xl object-cover"
                     />

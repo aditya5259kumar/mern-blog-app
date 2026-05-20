@@ -8,7 +8,7 @@ export const loginUser = createAsyncThunk(
   async (userData, thunkAPI) => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/login",
+        "https://mern-blog-app-aq3a.onrender.com/api/login",
         userData,
       );
 
@@ -37,7 +37,7 @@ export const signupUser = createAsyncThunk(
   async (userData, thunkAPI) => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/signup",
+        "https://mern-blog-app-aq3a.onrender.com/api/signup",
         userData,
       );
 

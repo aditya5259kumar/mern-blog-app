@@ -61,7 +61,7 @@ const AuthorDetail = () => {
             <img
               src={
                 singleAuthor?.author?.profilePhoto
-                  ? `http://localhost:3000${singleAuthor?.author?.profilePhoto}`
+                  ? `https://mern-blog-app-aq3a.onrender.com${singleAuthor?.author?.profilePhoto}`
                   : defaultUser
               }
               alt="pfp"

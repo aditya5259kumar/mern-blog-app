@@ -121,7 +121,7 @@ const MyProfile = () => {
                 previewImage
                   ? previewImage
                   : formData.profilePhoto
-                    ? `http://localhost:3000${formData.profilePhoto}`
+                    ? `https://mern-blog-app-aq3a.onrender.com${formData.profilePhoto}`
                     : defaultUser
               }
               alt="profile"

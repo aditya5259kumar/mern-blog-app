@@ -4,7 +4,7 @@ import axios from "axios";
 // readBlogs
 export const readBlogs = createAsyncThunk("blog", async (_, thunkAPI) => {
   try {
-    const response = await axios.get("http://localhost:3000/api/all-blogs");
+    const response = await axios.get("https://mern-blog-app-aq3a.onrender.com/api/all-blogs");
 
     // console.log("response.data-------", response.data);
 
@@ -23,7 +23,7 @@ export const blogCategory = createAsyncThunk(
   async (category, thunkAPI) => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/category/${category}`,
+        `https://mern-blog-app-aq3a.onrender.com/api/category/${category}`,
       );
 
       // console.log("response.data-------", response.data);
@@ -50,7 +50,7 @@ export const blogDetail = createAsyncThunk(
         },
       };
       const response = await axios.get(
-        `http://localhost:3000/api/blog/${id}`,
+        `https://mern-blog-app-aq3a.onrender.com/api/blog/${id}`,
         config,
       );
 
@@ -79,7 +79,7 @@ export const createBlogs = createAsyncThunk(
       };
 
       const response = await axios.post(
-        "http://localhost:3000/api/create-blog",
+        "https://mern-blog-app-aq3a.onrender.com/api/create-blog",
         blogData,
         config,
       );
@@ -109,7 +109,7 @@ export const deleteBlog = createAsyncThunk(
       };
 
       const response = await axios.delete(
-        `http://localhost:3000/api/delete-blog/${id}`,
+        `https://mern-blog-app-aq3a.onrender.com/api/delete-blog/${id}`,
         config,
       );
 
@@ -138,7 +138,7 @@ export const updateBlog = createAsyncThunk(
       };
 
       const response = await axios.put(
-        `http://localhost:3000/api/update-blog/${id}`,
+        `https://mern-blog-app-aq3a.onrender.com/api/update-blog/${id}`,
         blogData,
         config,
       );
@@ -158,7 +158,7 @@ export const searchBlog = createAsyncThunk(
   async (search, thunkAPI) => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/search-blog?search=${search}`,
+        `https://mern-blog-app-aq3a.onrender.com/api/search-blog?search=${search}`,
       );
 
       return response.data.data;
@@ -184,7 +184,7 @@ export const toggleLikeBlog = createAsyncThunk(
       };
 
       const response = await axios.post(
-        `http://localhost:3000/api/blog/${id}/like`,
+        `https://mern-blog-app-aq3a.onrender.com/api/blog/${id}/like`,
         {},
         config,
       );
@@ -210,7 +210,7 @@ export const viewBlog = createAsyncThunk("viewBlog", async (id, thunkAPI) => {
     };
 
     const response = await axios.post(
-      `http://localhost:3000/api/blog/${id}/view`,
+      `https://mern-blog-app-aq3a.onrender.com/api/blog/${id}/view`,
       {},
       config,
     );

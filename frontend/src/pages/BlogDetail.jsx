@@ -180,7 +180,7 @@ const BlogDetail = () => {
             <img
               src={
                 currentBlog?.author?.profilePhoto
-                  ? `http://localhost:3000${currentBlog?.author?.profilePhoto}`
+                  ? `https://mern-blog-app-aq3a.onrender.com${currentBlog?.author?.profilePhoto}`
                   : defaultUser
               }
               alt=""
@@ -210,7 +210,7 @@ const BlogDetail = () => {
           {currentBlog?.images?.map((item) => (
             <SwiperSlide key={item}>
               <img
-                src={`http://localhost:3000${item}`}
+                src={`https://mern-blog-app-aq3a.onrender.com${item}`}
                 className="w-full h-70 md:h-100 object-cover"
                 alt={currentBlog.title}
               />
@@ -222,7 +222,7 @@ const BlogDetail = () => {
 
         {/* <div className="mb-4 overflow-hidden rounded-2xl shadow-xl">
           <img
-            src={`http://localhost:3000${currentBlog.images[0]}`}
+            src={`https://mern-blog-app-aq3a.onrender.com${currentBlog.images[0]}`}
             alt={currentBlog.title}
             className="w-full h-70 md:h-100 object-cover "
           />
