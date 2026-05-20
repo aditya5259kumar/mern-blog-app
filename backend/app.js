@@ -29,8 +29,7 @@ app.use(
       "http://localhost:5173",
       "https://mern-blog-app-mu-ecru.vercel.app",
     ],
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   }),
 );
