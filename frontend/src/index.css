@@ -5,3 +5,11 @@
   font-family: "Inter", sans-serif;
   --swiper-theme-color: white;
 }
+
+.Toastify__toast {
+  min-height: 40px;
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 8px;
+  width: 280px;
+}

@@ -3,6 +3,7 @@ import black_beog_logo from "../assets/63e6fae264e26f6039829955_beog.svg";
 import { FaFacebookF, FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { FaInstagram, FaXTwitter } from "react-icons/fa6";
 import { Link } from "react-router";
+import { FaGlobe } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -17,19 +18,34 @@ const Footer = () => {
               We bring together ideas, trends, and perspectives that inform,
               inspire, and challenge the way you think.
             </p>
-            <div className="flex space-x-4 items-center text-lg mb-8">
-              <span className="p-1 text-xl text-white rounded-md hover:-translate-y-1 transition-all ease-in-out duration-200">
+            <div className="flex flex-col mb-4">
+              <h5 className="font-bold text-xl mb-6">Connect with me</h5>
+              <div className="flex  space-x-4 items-center text-lg">
+                {/* <a href="" className="p-1 text-xl text-white rounded-md hover:-translate-y-1 transition-all ease-in-out duration-200">
                 <FaInstagram />
-              </span>
-              <span className="p-1 text-xl text-white rounded-md hover:-translate-y-1 transition-all ease-in-out duration-200">
-                <FaXTwitter />
-              </span>
-              <span className="p-1 text-xl text-white rounded-md hover:-translate-y-1 transition-all ease-in-out duration-200">
-                <FaGithub />
-              </span>
-              <span className="p-1 text-xl text-white rounded-md hover:-translate-y-1 transition-all ease-in-out duration-200">
-                <FaLinkedinIn />
-              </span>
+              </a> */}
+                <a
+                  href="https://www.linkedin.com/in/aditya5259kumar/"
+                  target="_blank"
+                  className="p-1 text-xl text-white rounded-md hover:-translate-y-1 transition-all ease-in-out duration-200"
+                >
+                  <FaLinkedinIn />
+                </a>
+                <a
+                  href="https://github.com/aditya5259kumar"
+                  target="_blank"
+                  className="p-1 text-xl text-white rounded-md hover:-translate-y-1 transition-all ease-in-out duration-200"
+                >
+                  <FaGithub />
+                </a>
+                <a
+                  href="https://aditya-devportfolio.netlify.app/"
+                  target="_blank"
+                  className="p-1 text-xl text-white rounded-md hover:-translate-y-1 transition-all ease-in-out duration-200"
+                >
+                  <FaGlobe />
+                </a>
+              </div>
             </div>
           </div>
 
@@ -84,10 +100,7 @@ const Footer = () => {
       </div>
 
       <div className="bg-gray-800 text-white text-[15px] px-8 py-7 text-center">
-        <p>
-          © 2026 <span className="font-semibold">Beog</span>. All Rights
-          Reserved.
-        </p>
+        <p>© 2026 Beog. All Rights Reserved. | Built by Aditya</p>
       </div>
     </footer>
   );

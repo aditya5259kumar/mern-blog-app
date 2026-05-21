@@ -68,7 +68,7 @@ const Signup = () => {
     const result = await dispatch(signupUser(formData));
 
     if (result.meta.requestStatus === "fulfilled") {
-      navigate("/blog");
+      navigate("/profile");
     }
   }
 

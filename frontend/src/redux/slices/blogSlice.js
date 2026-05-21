@@ -233,6 +233,7 @@ const blogSlice = createSlice({
     blogsWithSameCategory: [],
     currentBlog: null,
     loading: false,
+    updateLoading: false,
     deleteLoading: false,
     updateLoading: false,
     error: null,

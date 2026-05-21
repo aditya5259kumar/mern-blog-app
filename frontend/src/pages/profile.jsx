@@ -6,6 +6,7 @@ import { GoHeartFill } from "react-icons/go";
 import BlogCard from "../components/BlogCard";
 import { Link } from "react-router";
 import defaultUser from "../assets/defaultUser.jpg";
+import { toast } from "react-toastify";
 
 const MyProfile = () => {
   const dispatch = useDispatch();
@@ -76,7 +77,7 @@ const MyProfile = () => {
     setPreviewImage(preview);
   };
 
-  const handleUpdate = () => {
+  const handleUpdate = async () => {
     const data = new FormData();
 
     data.append("name", formData.name);
@@ -86,10 +87,14 @@ const MyProfile = () => {
       data.append("pfp", selectedFile);
     }
 
-    dispatch(updateProfile(data));
-    setPreviewImage(null);
-    setSelectedFile(null);
-    setIsEditing(false);
+    const res = await dispatch(updateProfile(data));
+    toast.success("Profile updated successfully");
+
+    if (res.meta.requestStatus === "fulfilled") {
+      setPreviewImage(null);
+      setSelectedFile(null);
+      setIsEditing(false);
+    }
   };
 
   if (profileLoading) {
@@ -119,6 +124,8 @@ const MyProfile = () => {
   };
 
   const joinedDate = formatDate(user.createdAt);
+
+  console.log("updateLoading:============================", updateLoading);
 
   return (
     <div className="py-20 bg-gray-50">

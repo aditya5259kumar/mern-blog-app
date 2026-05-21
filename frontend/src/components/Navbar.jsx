@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import black_beog_logo from "../assets/63e6fae264e26f6039829955_beog.svg";
 import { HiOutlineMenuAlt4, HiOutlineX } from "react-icons/hi";
 import { NAVBMENU } from "../data/data";
@@ -15,6 +15,22 @@ const Navbar = () => {
   const [sideBar, setSideBar] = useState(false);
   const [userSetting, setUserSetting] = useState(false);
 
+  const userMenuRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (userMenuRef.current && !userMenuRef.current.contains(event.target)) {
+        setUserSetting(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   function handleSideBar() {
     setSideBar((prev) => !prev);
   }
@@ -30,10 +46,10 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-  if (token && !user) {
-    dispatch(myProfile());
-  }
-}, [dispatch, token, user]);
+    if (token) {
+      dispatch(myProfile());
+    }
+  }, [dispatch, token]);
 
   // console.log(user);
 
@@ -77,7 +93,7 @@ const Navbar = () => {
 
             <div className="flex justify-center items-center gap-6 sm:gap-10">
               {token && (
-                <div className="relative">
+                <div className="relative" ref={userMenuRef}>
                   <button
                     onClick={handleUserSetting}
                     className="flex items-center gap-1 overflow-hidden"

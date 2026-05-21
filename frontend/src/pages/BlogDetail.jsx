@@ -133,7 +133,6 @@ const BlogDetail = () => {
   return (
     <div className=" my-15">
       <div className="container px-8 xl:px-60 lg:px-40 mx-auto">
-
         <div className="flex items-center justify-between pb-3 mb-3 border-b border-gray-200">
           <span className="text-lg font-medium text-gray-500">
             {formattedCreatedDate}
@@ -293,19 +292,35 @@ const BlogDetail = () => {
           <div className="flex items-center gap-1 sm:gap-4 font-bold">
             <span className="text-lg font-bold"> Share blog:</span>
             <div className="flex space-x-2 items-center text-lg">
-              <span className="p-1 text-xl text-gray-900 rounded-md hover:-translate-y-1 transition-all ease-in-out duration-200">
+              <a
+                href="https://www.facebook.com/?utm_source=chatgpt.com"
+                target="_blank"
+                className="p-1 text-xl text-gray-900 rounded-md hover:-translate-y-1 transition-all ease-in-out duration-200"
+              >
                 <FaFacebookF />
-              </span>
-              <span className="p-1 text-xl text-gray-900 rounded-md hover:-translate-y-1 transition-all ease-in-out duration-200">
+              </a>
+              <a
+                href="https://www.instagram.com/?utm_source=chatgpt.com"
+                target="_blank"
+                className="p-1 text-xl text-gray-900 rounded-md hover:-translate-y-1 transition-all ease-in-out duration-200"
+              >
                 <FaInstagram />
-              </span>
-              <span className="p-1 text-xl text-gray-900 rounded-md hover:-translate-y-1 transition-all ease-in-out duration-200">
+              </a>
+              <a
+                href="https://x.com/?utm_source=chatgpt.com"
+                target="_blank"
+                className="p-1 text-xl text-gray-900 rounded-md hover:-translate-y-1 transition-all ease-in-out duration-200"
+              >
                 <FaXTwitter />
-              </span>
+              </a>
 
-              <span className="p-1 text-xl text-gray-900 rounded-md hover:-translate-y-1 transition-all ease-in-out duration-200">
+              <a
+                href="https://www.linkedin.com/feed/"
+                target="_blank"
+                className="p-1 text-xl text-gray-900 rounded-md hover:-translate-y-1 transition-all ease-in-out duration-200"
+              >
                 <FaLinkedinIn />
-              </span>
+              </a>
             </div>
           </div>
         </div>

@@ -25,13 +25,19 @@ const CreateBlog = () => {
   const MAX_IMAGES = 3;
   const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
 
-  const { loading, error: authError } = useSelector((state) => state.blog);
+  const {
+    loading,
+    updateLoading,
+    error: authError,
+  } = useSelector((state) => state.blog);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const { id } = useParams();
   const editMode = Boolean(id);
   const { currentBlog } = useSelector((state) => state.blog);
+
+  const activeLoading = editMode ? updateLoading : loading;
 
   // console.log(editMode);
 
@@ -423,7 +429,7 @@ const CreateBlog = () => {
             </ul>
           </div>
 
-          <div className="">
+          <div className="flex items-center">
             {authError && (
               <p className="text-sm mb-5 text-center text-red-700">
                 {authError || "** Something Went Wrong! **"}
@@ -431,26 +437,29 @@ const CreateBlog = () => {
             )}
             <span
               onClick={resetForm}
-              className="px-6 mr-4 md:mr-10 py-3 rounded-md bg-gray-100 border border-gray-300 text-gray-600"
+              className="px-6 mr-4 md:mr-6 py-3 rounded-md bg-gray-100 border border-gray-300 text-gray-600"
             >
               Reset
             </span>
             <button
               type="submit"
-              className="px-6 py-3 rounded-md bg-gray-800 text-white"
+              disabled={activeLoading}
+              className={`px-6 py-3 rounded-md text-white flex items-center gap-2 
+    ${activeLoading ? "bg-gray-600 cursor-not-allowed" : "bg-gray-800"}`}
             >
-              {loading ? (
-                "loading..."
+              {activeLoading ? (
+                <>
+                  <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                  {editMode ? "Updating..." : "Publishing..."}
+                </>
               ) : editMode ? (
-                <span className="flex items-center gap-2">
-                  Update
-                  <GrUpdate className="text-base" />
-                </span>
+                <>
+                  Update <GrUpdate className="text-base" />
+                </>
               ) : (
-                <span className="flex items-center gap-2">
-                  Publish
-                  <IoSendSharp />
-                </span>
+                <>
+                  Publish <IoSendSharp />
+                </>
               )}
             </button>
           </div>

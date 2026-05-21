@@ -13,7 +13,12 @@ createRoot(document.getElementById("root")).render(
     <BrowserRouter>
       <Provider store={store}>
         <App />
-        <ToastContainer />
+        <ToastContainer
+          position="top-center"
+          pauseOnHover={false}
+          hideProgressBar={true}
+          closeButton={false}
+        />
       </Provider>
     </BrowserRouter>
   </PrimeReactProvider>,
