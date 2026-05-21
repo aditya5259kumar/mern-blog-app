@@ -24,16 +24,16 @@ const Navbar = () => {
   }
 
   const { token } = useSelector((state) => state.auth);
-  const { user, loading } = useSelector((state) => state.user);
+  const { user, profileLoading } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (token ) {
-      dispatch(myProfile());
-    }
-  }, [dispatch, token]);
+  if (token && !user) {
+    dispatch(myProfile());
+  }
+}, [dispatch, token, user]);
 
   // console.log(user);
 
@@ -82,7 +82,7 @@ const Navbar = () => {
                     onClick={handleUserSetting}
                     className="flex items-center gap-1 overflow-hidden"
                   >
-                    {loading ? (
+                    {profileLoading ? (
                       <div className="w-10 h-10 rounded-full bg-gray-300 animate-pulse"></div>
                     ) : (
                       <img
@@ -97,7 +97,7 @@ const Navbar = () => {
                     )}
 
                     <span className="hidden md:block font-semibold text-gray-800">
-                      {loading ? "Loading..." : `@${user?.userName}`}
+                      {profileLoading ? "Loading..." : `@${user?.userName}`}
                     </span>
                   </button>
 

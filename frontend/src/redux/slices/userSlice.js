@@ -8,13 +8,16 @@ export const myProfile = createAsyncThunk(
     try {
       const token = localStorage.getItem("token");
 
-      const response = await axios.get("https://mern-blog-app-aq3a.onrender.com/api/my-profile", {
-        headers: {
-          Authorization: `Bearer ${token}`,
+      const response = await axios.get(
+        "https://mern-blog-app-aq3a.onrender.com/api/my-profile",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         },
-      });
+      );
 
-      console.log("response.data.data----------",response.data.data)
+      // console.log("response.data.data----------", response.data.data);
 
       return response.data.data;
     } catch (error) {
@@ -58,8 +61,9 @@ const userSlice = createSlice({
     user: null,
     blogs: [],
     totalBlogs: 0,
-    totalLikes:0,
-    loading: false,
+    totalLikes: 0,
+    profileLoading: false,
+    updateLoading: false,
     error: null,
   },
   reducers: {},
@@ -67,32 +71,32 @@ const userSlice = createSlice({
     builder
       // my profile
       .addCase(myProfile.pending, (state) => {
-        state.loading = true;
+        state.profileLoading = true;
         state.error = null;
       })
       .addCase(myProfile.fulfilled, (state, action) => {
-        state.loading = false;
+        state.profileLoading = false;
         state.user = action.payload.user;
         state.blogs = action.payload.blogs;
         state.totalBlogs = action.payload.totalBlogs;
         state.totalLikes = action.payload.totalLikes;
       })
       .addCase(myProfile.rejected, (state, action) => {
-        state.loading = false;
+        state.profileLoading = false;
         state.error = action.payload;
       })
 
       // update profile
       .addCase(updateProfile.pending, (state) => {
-        state.loading = true;
+        state.updateLoading = true;
         state.error = null;
       })
       .addCase(updateProfile.fulfilled, (state, action) => {
-        state.loading = false;
+        state.updateLoading = false;
         state.user = action.payload;
       })
       .addCase(updateProfile.rejected, (state, action) => {
-        state.loading = false;
+        state.updateLoading = false;
         state.error = action.payload;
       });
   },

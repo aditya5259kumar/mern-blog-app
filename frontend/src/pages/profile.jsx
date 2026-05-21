@@ -9,9 +9,15 @@ import defaultUser from "../assets/defaultUser.jpg";
 
 const MyProfile = () => {
   const dispatch = useDispatch();
-  const { user, blogs, totalBlogs, totalLikes, loading, error } = useSelector(
-    (state) => state.user,
-  );
+  const {
+    user,
+    blogs,
+    totalBlogs,
+    totalLikes,
+    profileLoading,
+    updateLoading,
+    error,
+  } = useSelector((state) => state.user);
 
   // console.log("user----------------", user);
   // console.log("blogs----------------", blogs);
@@ -30,8 +36,10 @@ const MyProfile = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(myProfile());
-  }, [dispatch]);
+    if (!user) {
+      dispatch(myProfile());
+    }
+  }, [dispatch, user]);
 
   useEffect(() => {
     if (user) {
@@ -84,8 +92,12 @@ const MyProfile = () => {
     setIsEditing(false);
   };
 
-  if (loading) {
-    return <p className="text-center mt-20">Loading...</p>;
+  if (profileLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <span className="w-10 h-10 border-4 border-gray-400 border-t-transparent rounded-full animate-spin"></span>
+      </div>
+    );
   }
 
   if (error) {
@@ -94,7 +106,7 @@ const MyProfile = () => {
     );
   }
 
-  if (!formData) return null;
+  if (!formData) return <div>Loading...</div>;
 
   const formatDate = (dateString) => {
     return new Date(dateString)
@@ -198,7 +210,7 @@ const MyProfile = () => {
                 <>
                   <button
                     onClick={handleEdit}
-                    className="border-2 bg-gray-800 text-white px-5 py-2 cursor-pointer rounded-md"
+                    className="mb-4 cursor-pointer bg-gray-700 border text-white px-6 py-3 rounded-lg font-medium transition-all ease-in-out inline-flex items-center justify-center gap-2"
                   >
                     Edit Profile
                   </button>
@@ -212,10 +224,16 @@ const MyProfile = () => {
                     Cancel
                   </button>
                   <button
+                    disabled={updateLoading}
                     onClick={handleUpdate}
-                    className=" bg-gray-800 text-white px-6 py-3 rounded-lg cursor-pointer"
+                    className={`cursor-pointer bg-gray-700 border border-gray-700 text-white px-6 py-3 rounded-lg font-medium transition-all ease-in-out inline-flex items-center justify-center gap-2 ${
+                      updateLoading ? "opacity-60 cursor-not-allowed" : ""
+                    }`}
                   >
-                    Update Profile
+                    {updateLoading && (
+                      <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                    )}
+                    {updateLoading ? "Saving changes..." : "Save"}
                   </button>
                 </>
               )}
@@ -228,7 +246,7 @@ const MyProfile = () => {
           </h4>
 
           <div className="container mt-12 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
-            {loading
+            {profileLoading && !user
               ? Array.from({ length: 4 }).map((_, i) => (
                   <SkeletonCard key={i} />
                 ))
@@ -239,7 +257,7 @@ const MyProfile = () => {
                 ))}
           </div>
 
-          {!loading && blogs.length === 0 && (
+          {!profileLoading && blogs.length === 0 && (
             <p className=" text-gray-400 text-lg text-center pt-8">
               No Published blogs
             </p>
