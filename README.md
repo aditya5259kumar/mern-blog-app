@@ -119,23 +119,14 @@ BEOG/
 │
 ├── frontend/
 │   ├── public/
-│   │   └── src/
-│   │       ├── assets/
-│   │       ├── components/
-│   │       ├── data/
-│   │       ├── pages/
-│   │       ├── redux/
-│   │       ├── App.css
-│   │       ├── App.jsx
-│   │       ├── index.css
-│   │       └── main.jsx
-│   ├── .gitignore
-│   ├── eslint.config.js
-│   ├── index.html
-│   ├── package-lock.json
+│   ├── src/
+│   │   ├── assets/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── redux/
+│   │   ├── services/
+│   │   └── utils/
 │   ├── package.json
-│   ├── README.md
-│   ├── vercel.json
 │   └── vite.config.js
 │
 ├── backend/
@@ -143,7 +134,6 @@ BEOG/
 │   ├── controller/
 │   ├── middleware/
 │   ├── model/
-│   ├── node_modules/
 │   ├── public/
 │   ├── routes/
 │   ├── utils/
@@ -151,7 +141,6 @@ BEOG/
 │   ├── views/
 │   ├── .env
 │   ├── app.js
-│   ├── package-lock.json
 │   └── package.json
 │
 ├── .gitignore
