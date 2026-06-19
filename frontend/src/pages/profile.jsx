@@ -125,7 +125,7 @@ const MyProfile = () => {
 
   const joinedDate = formatDate(user.createdAt);
 
-  console.log("updateLoading:============================", updateLoading);
+  // console.log("updateLoading:============================", updateLoading);
 
   return (
     <div className="py-20 bg-gray-50">

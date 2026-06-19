@@ -235,7 +235,7 @@ const blogSlice = createSlice({
     loading: false,
     updateLoading: false,
     deleteLoading: false,
-    updateLoading: false,
+    // updateLoading: false,
     error: null,
   },
   reducers: {},
