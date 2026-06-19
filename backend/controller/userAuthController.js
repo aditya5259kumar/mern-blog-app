@@ -33,7 +33,6 @@ const userAuth = {
       const token = jwt.sign(
         { id: user._id, email: user.email },
         process.env.JWT_SECRET,
-        { expiresIn: "7d" },
       );
 
       helper.success(res, "user created successdully.", token);
@@ -66,7 +65,6 @@ const userAuth = {
       const token = jwt.sign(
         { id: user._id, email: user.email },
         process.env.JWT_SECRET,
-        { expiresIn: "7d" },
       );
 
       helper.success(res, "user logged in successdully.", token);
@@ -74,7 +72,6 @@ const userAuth = {
       helper.error(res, "something went wrong!", error);
     }
   },
-}
-
+};
 
 export default userAuth;

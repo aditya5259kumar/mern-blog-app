@@ -51,7 +51,7 @@ const Navbar = () => {
     }
   }, [dispatch, token]);
 
-  // console.log(user);
+  console.log("current logged in user hu bhai- ",user);
 
   function logOutHandler() {
     if (token) {
