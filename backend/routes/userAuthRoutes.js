@@ -12,4 +12,7 @@ router.post("/signup", signupValidator, validate, userAuth.signup);
 // login----------
 router.post("/login", loginValidator, validate, userAuth.login);
 
+// health----------
+router.get("/health", userAuth.healthRoute);
+
 export default router;

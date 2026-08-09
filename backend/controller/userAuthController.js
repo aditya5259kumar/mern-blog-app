@@ -72,6 +72,15 @@ const userAuth = {
       helper.error(res, "something went wrong!", error);
     }
   },
+
+  // -------- health route---------
+  healthRoute: async (req, res) => {
+    try {
+      helper.success(res, "backend is running", 200);
+    } catch (error) {
+      helper.error(res, "something went wrong!", error);
+    }
+  },
 };
 
 export default userAuth;
